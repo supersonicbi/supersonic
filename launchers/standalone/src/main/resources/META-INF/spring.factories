@@ -51,7 +51,7 @@ com.tencent.supersonic.headless.server.processor.ResultProcessor=\
     com.tencent.supersonic.headless.server.processor.EntityInfoProcessor
 
 com.tencent.supersonic.headless.server.modeller.SemanticModeller=\
-    com.tencent.supersonic.headless.server.modeller.RuleSemanticModeller
+    com.tencent.supersonic.headless.server.modeller.LLMSemanticModeller
 
 ### chat-server SPIs
 
