@@ -13,7 +13,7 @@ import java.util.stream.Collectors;
 
 public class SemanticSchema implements Serializable {
 
-    private List<DataSetSchema> dataSetSchemaList;
+    private final List<DataSetSchema> dataSetSchemaList;
 
     public SemanticSchema(List<DataSetSchema> dataSetSchemaList) {
         this.dataSetSchemaList = dataSetSchemaList;
