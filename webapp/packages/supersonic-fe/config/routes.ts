@@ -30,6 +30,12 @@ const ROUTES = [
     component: './ChatPage',
     envEnableList: [ENV_KEY.CHAT],
   },
+  {
+    path: '/dashboard',
+    name: 'dashboard',
+    component: './Dashboard',
+    envEnableList: [ENV_KEY.CHAT],
+  },
   // {
   //   path: '/chatSetting/model/:domainId?/:modelId?/:menuKey?',
   //   component: './SemanticModel/ChatSetting/ChatSetting',

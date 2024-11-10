@@ -1,0 +1,37 @@
+import { Ability } from '@casl/ability';
+import {
+    type ApiError,
+    type LightdashUserWithAbilityRules,
+} from '@lightdash/common';
+import { useQuery } from '@tanstack/react-query';
+import { lightdashApi } from '../../api';
+import { USER_DATA } from '../../mocks/user';
+
+export type UserWithAbility = LightdashUserWithAbilityRules & {
+    ability: Ability;
+};
+const getUserState = async (): Promise<UserWithAbility> => {
+    // const user = await lightdashApi<LightdashUserWithAbilityRules>({
+    //     url: `/user`,
+    //     method: 'GET',
+    //     body: undefined,
+    // });
+
+    const user = USER_DATA;
+
+    return {
+        ...user,
+        ability: new Ability(user.abilityRules),
+    };
+};
+
+const useUser = (isAuthenticated: boolean) => {
+    return useQuery<UserWithAbility, ApiError>({
+        queryKey: ['user'],
+        queryFn: getUserState,
+        enabled: isAuthenticated,
+        retry: false,
+    });
+};
+
+export default useUser;

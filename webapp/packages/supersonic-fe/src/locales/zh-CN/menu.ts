@@ -20,5 +20,6 @@ export default {
   'menu.login': '登录',
   'menu.system': '系统设置',
   'menu.chat': '问答对话',
+  'menu.dashboard': '数据看板',
   'menu.agent': '助理管理',
 };
