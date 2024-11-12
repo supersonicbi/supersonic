@@ -34,11 +34,23 @@ pnpm i
 
 pnpm run build:os-local
 
+cd ../../dashboard
+
+if ! command -v yarn >/dev/null 2>&1; then
+  npm i -g yarn
+fi
+
+yarn install
+
+npm run build
+
+mv ./build ../packages/supersonic-fe/supersonic-webapp/dashboard-page
+
+cd ../packages/supersonic-fe
+
 tar -zcvf supersonic-webapp.tar.gz ./supersonic-webapp
 
 mv supersonic-webapp.tar.gz ../../
-
-cd ../../
 
 end=$(date +%s)
 

@@ -22,7 +22,7 @@ export default defineConfig({
     css: {
         transformer: 'lightningcss',
     },
-    base: process.env.NODE_ENV === 'production' ? '/dashboard/' : '/',
+    base: process.env.NODE_ENV === 'production' ? '/dashboard-page/' : '/',
     build: {
         outDir: 'build',
         target: 'es2015',

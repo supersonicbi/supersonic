@@ -11,10 +11,11 @@ public class WebConfig extends WebMvcConfigurerAdapter {
     @Override
     public void addResourceHandlers(ResourceHandlerRegistry registry) {
         registry.addResourceHandler("/webapp/**").addResourceLocations("classpath:/webapp/");
+        registry.addResourceHandler("/dashboard-page/**").addResourceLocations("classpath:/dashboard-page/");
     }
 
     @Override
     public void addViewControllers(ViewControllerRegistry registry) {
-        registry.addViewController("/").setViewName("forward:webapp/index.html");
+//        registry.addViewController("/").setViewName("forward:webapp/index.html");
     }
 }
