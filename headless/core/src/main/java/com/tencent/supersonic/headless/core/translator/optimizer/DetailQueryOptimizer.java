@@ -14,6 +14,11 @@ import java.util.Objects;
 public class DetailQueryOptimizer implements QueryOptimizer {
 
     @Override
+    public boolean accept(QueryStatement queryStatement) {
+        return false;
+    }
+
+    @Override
     public void rewrite(QueryStatement queryStatement) {
         StructQuery structQuery = queryStatement.getStructQuery();
         String sqlRaw = queryStatement.getSql().trim();
