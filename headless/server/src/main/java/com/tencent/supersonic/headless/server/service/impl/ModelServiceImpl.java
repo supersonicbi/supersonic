@@ -142,8 +142,12 @@ public class ModelServiceImpl implements ModelService {
     @Override
     @Transactional
     public ModelResp updateModel(ModelReq modelReq, User user) throws Exception {
-        // checkParams(modelReq);
+        // Comment out below checks for now, they seem unnecessary and
+        // lead to unexpected exception in updating model
+        /*
+        checkParams(modelReq);
         checkRelations(modelReq);
+         */
         ModelDO modelDO = modelRepository.getModelById(modelReq.getId());
         ModelConverter.convert(modelDO, modelReq, user);
         modelRepository.updateModel(modelDO);
@@ -364,8 +368,10 @@ public class ModelServiceImpl implements ModelService {
         metaFilter.setModelIds(Lists.newArrayList(modelId));
         List<MetricResp> metricResps = metricService.getMetrics(metaFilter);
         List<DimensionResp> dimensionResps = dimensionService.getDimensions(metaFilter);
-        boolean validMetric = metricResps.stream().anyMatch(metricResp -> Objects.equals(metricResp.getStatus(), StatusEnum.ONLINE.getCode()));
-        boolean validDimension = dimensionResps.stream().anyMatch(dimensionResp -> Objects.equals(dimensionResp.getStatus(), StatusEnum.ONLINE.getCode()));
+        boolean validMetric = metricResps.stream().anyMatch(
+                metricResp -> Objects.equals(metricResp.getStatus(), StatusEnum.ONLINE.getCode()));
+        boolean validDimension = dimensionResps.stream().anyMatch(dimensionResp -> Objects
+                .equals(dimensionResp.getStatus(), StatusEnum.ONLINE.getCode()));
         if (validMetric || validDimension) {
             throw new RuntimeException("存在基于该模型创建的指标和维度, 暂不能删除, 请确认");
         }
